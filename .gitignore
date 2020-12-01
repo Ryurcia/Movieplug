@@ -17,6 +17,10 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.eslintcache
+src/App.test.jsx
+src/reportWebVitals.jsx
+src/setupTests.jsx
 
 npm-debug.log*
 yarn-debug.log*
