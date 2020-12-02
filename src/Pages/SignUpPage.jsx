@@ -9,12 +9,29 @@ import { AuthStyled, TitleStyled } from '../Styled-Components/AuthStyled';
 
 
 export const SignUpPage = () => {
+
+    const motionObjects = {
+        initial : {
+            opacity: 0 
+        },
+        animate : {
+            opacity: 1
+        },
+        exit : { 
+            opacity: 0 
+        },
+        transition : {
+            ease: "easeIn", 
+            duration: 0.4 
+        }
+    }
+
     return (
         <motion.div
-            initial={{ y: '-100vh', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: '-100vh', opacity: 0 }}
-            transition={{ ease: "easeIn", duration: 0.2 }}
+            initial={motionObjects.initial}
+            animate={motionObjects.animate}
+            exit={motionObjects.exit}
+            transition={motionObjects.transition}
         >
             <AuthStyled>
                 <TitleStyled>

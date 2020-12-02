@@ -8,12 +8,32 @@ import { AuthSignInStyled, SignInTitleStyled } from '../Styled-Components/AuthSt
 
 
 export const SignInPage = () => {
+
+    const motionObjects = {
+        initial : {
+            x:'100vh', 
+            opacity: 0 
+        },
+        animate : {
+            x: 0,
+            opacity: 1
+        },
+        exit : {
+            x: '100vh', 
+            opacity: 0 
+        },
+        transition : {
+            ease: "easeIn", 
+            duration: 0.4 
+        }
+    }
+    
     return (
         <motion.div
-            initial={{ x: '100vh', opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: '100vh', opacity: 0 }}
-            transition={{ ease: "easeIn", duration: 0.3 }}
+            initial={motionObjects.initial}
+            animate={motionObjects.animate}
+            exit={motionObjects.exit}
+            transition={motionObjects.transition}
         >
             <AuthSignInStyled>
                 <SignInTitleStyled>
