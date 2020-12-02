@@ -25,7 +25,7 @@ Simplifies stying components
 Learn More On:
 [Styled Components](https://styled-components.com/)
 
-#Framer Motion
+### Framer Motion
 
 Animate components and elements
 
