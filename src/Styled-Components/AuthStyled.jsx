@@ -8,6 +8,7 @@ align-items:center;
 flex-wrap:wrap;
 justify-content:space-around;
 background-color:#F05454;
+
 `
 
 export const TitleStyled = styled.div`
@@ -21,4 +22,14 @@ p{
     font-size: 1.5rem;
     font-weight:300;
 }
+`
+
+
+// Sign In Page
+export const AuthSignInStyled = styled(AuthStyled)`
+background-color:#E8E8E8;
+`
+
+export const SignInTitleStyled = styled(TitleStyled)`
+color:#222831;
 `

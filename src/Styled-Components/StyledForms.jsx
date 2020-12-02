@@ -15,6 +15,12 @@ justify-content:space-around;
 align-items:center;
 background-color:#222831;
 
+.link-item {
+    outline:none;
+    color:#E8E8E8;
+    text-decoration:none;
+}
+
 h1 {
     color:#E8E8E8;
     font-size:3rem;
@@ -32,17 +38,19 @@ h1 {
         border-radius:50%;
         background-color:#E8E8E8;
         cursor:pointer;
+        outline:none;
     }
 }
 
 
-.signUpBtn {
+.logBtn {
     border:none;
     color:#E8E8E8;
     font-size:1.5rem;
     text-transform:uppercase;
     background-color:transparent;
     cursor:pointer;
+    outline:none;
 }
 
 h3 {
@@ -62,9 +70,15 @@ input {
     padding:10px;
     border:none;
     border-radius:5px;
+    outline:none;
 
     &:focus {
         border:1.7px solid #70dafa;
     }
 }
+`
+
+// Sign in Page
+export const SignInStyled = styled(SignUpStyled)`
+
 `

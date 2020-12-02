@@ -46,6 +46,7 @@ margin:auto;
 html {
     max-width:1920px;
     margin:auto;
+    background-color:#E8E8E8;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
