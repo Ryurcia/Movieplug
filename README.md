@@ -25,3 +25,10 @@ Simplifies stying components
 Learn More On:
 [Styled Components](https://styled-components.com/)
 
+#Framer Motion
+
+Animate components and elements
+
+Learn More On:
+[Framer Motion](https://www.framer.com/motion/)
+
