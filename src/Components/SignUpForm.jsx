@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { Link } from 'react-router-dom';
 // imgs
 import googleIcon from '../img/google-icon.png';
 import fbIcon from '../img/facebook-icon.png';
@@ -14,8 +15,8 @@ export const SignUpForm = () => {
         <SignUpStyled>
             <h1>Get Started</h1>
             <div className="options">
-                <button className='option-btn'><img src={googleIcon} alt="" width='30px' /></button>
-                <button className='option-btn'><img src={fbIcon} alt="" width='30px' /></button>
+                <button className='option-btn'><img src={googleIcon} alt="" width='50px' /></button>
+                <button className='option-btn'><img src={fbIcon} alt="" width='50px' /></button>
             </div>
 
             {/* Form */}
@@ -25,8 +26,8 @@ export const SignUpForm = () => {
                 <input type="text" placeholder="Confirm Password" required />
             </FormStyled>
 
-            <button className='signUpBtn'>Sign Up</button>
-            <h3>Already Signed Up? Sign In</h3>
+            <button className='logBtn'>Sign Up</button>
+            <Link className='link-item' to='/SignIn'>Already Signed Up? Sign In</Link>
         </SignUpStyled>
     )
 }
