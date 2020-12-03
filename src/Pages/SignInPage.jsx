@@ -24,7 +24,7 @@ export const SignInPage = () => {
         },
         transition : {
             ease: "easeIn", 
-            duration: 0.4 
+            duration: 0.5
         }
     }
     

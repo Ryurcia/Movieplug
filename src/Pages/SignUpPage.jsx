@@ -36,7 +36,7 @@ export const SignUpPage = () => {
             <AuthStyled>
                 <TitleStyled>
                     <h1>Movieplug</h1>
-                    <p>Create Your Account and Share Your Favorite Shows/Movies to the World</p>
+                    <p>Share Your Favorite Movies/Shows with Your Friends and the World</p>
                 </TitleStyled>
 
                 <SignUpForm />
