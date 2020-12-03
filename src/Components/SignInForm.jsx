@@ -15,8 +15,8 @@ export const SignInForm = () => {
         <SignUpStyled>
             <h1>Welcome Back</h1>
             <div className="options">
-                <button className='option-btn'><img src={googleIcon} alt="" width='50px' /></button>
-                <button className='option-btn'><img src={fbIcon} alt="" width='50px' /></button>
+                <button className='option-btn'><img src={googleIcon} alt="" width='40px' /></button>
+                <button className='option-btn'><img src={fbIcon} alt="" width='40px' /></button>
             </div>
 
             {/* Form */}
