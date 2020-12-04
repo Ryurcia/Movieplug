@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useForm } from '../Util/useForm';
 // imgs
 import googleIcon from '../img/google-icon.png';
 import fbIcon from '../img/facebook-icon.png';
+import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 
 // Styles
 import { SignUpStyled, FormStyled } from '../Styled-Components/StyledForms'
@@ -15,6 +16,12 @@ export const SignUpForm = () => {
     // useForm Callback
     const {inputValues,inputErrors, handleChange, handleSubmit} = useForm(handleSignUp);
 
+    //States
+    const [isValid,setIsValid] = useState({
+        email : true,
+        password : true,
+    })
+
 
     function handleSignUp () {
         console.log("Signed Up");
@@ -23,13 +30,28 @@ export const SignUpForm = () => {
         firebase.auth().createUserWithEmailAndPassword(inputValues.email, inputValues.password)
         .then((user) => {
             // Signed in 
-            // ...
+            console.log("Signed Up");
+            setIsValid({
+                ...isValid,
+                email: true,
+                password:true
+            })
         })
         .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(`${errorCode}: ${errorMessage}`);
+            console.log(`${error.code}: ${error.message}`);
             
+            if(error.code === 'auth/invalid-email' || error.code === 'auth/email-already-in-use') {
+                console.log("invalid email");
+                setIsValid({
+                    ...isValid,
+                    email: false
+                })     
+            }else if(error.code === 'auth/weak-password'){
+                setIsValid({
+                    ...isValid,
+                    password:false
+                })
+            }
         })
 
     }
@@ -45,9 +67,16 @@ export const SignUpForm = () => {
 
             {/* Form */}
             <FormStyled>
-                <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-                <input name="password" type="text" placeholder="Create Password" onChange={handleChange} required />
-                <input name="confirmedPassword" type="text" placeholder="Confirm Password" onChange={handleChange} required />
+                <div>
+                    <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
+                </div>
+                <div>
+                    <input minLength="6" name="password" type="text" placeholder="Create Password" onChange={handleChange} required />
+                </div>
+
+                {/* Error Messages */}
+                {isValid.email ? null : <label>{inputErrors.email}</label>}
+                {isValid.password ? null : <label>{inputErrors.password}</label>}
             </FormStyled>
 
             <button className='logBtn' onClick={handleSubmit}>Sign Up</button>

@@ -76,9 +76,11 @@ input {
         border:1.7px solid #70dafa;
     }
 }
-`
-
-// Sign in Page
-export const SignInStyled = styled(SignUpStyled)`
-
+/* Error Labels */
+label {
+    display:block;
+    width:80%;
+    margin:auto;
+    color:red;
+}
 `
