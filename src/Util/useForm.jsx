@@ -4,14 +4,12 @@ import { useState } from 'react';
 export const useForm = (callback) => {
     const [inputValues, setInputValues] = useState({
         email : "",
-        password:"",
-        confirmedPassword: ""
+        password:""
     })
 
     const [inputErrors] = useState({
         email: "Invalid Email Address / Already In Use",
         password: "Password Too Weak",
-        noMatchPassword: "Password Does not Match"
     })
 
     // Handlers
