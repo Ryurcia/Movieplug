@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 // Components
 import { SignUpForm } from '../Components/SignUpForm';
-import { SignInForm } from '../Components/SignInForm';
 // Styles
 import { AuthStyled, TitleStyled } from '../Styled-Components/AuthStyled';
 

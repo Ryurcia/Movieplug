@@ -38,15 +38,18 @@ export const SignUpForm = () => {
             })
         })
         .catch((error) => {
-            console.log(`${error.code}: ${error.message}`);
+            let errorCode = error.code
+            let errorMessage = error.message
+
+            console.log(`${errorCode}: ${errorMessage}`);
             
-            if(error.code === 'auth/invalid-email' || error.code === 'auth/email-already-in-use') {
+            if(errorCode === 'auth/invalid-email' || errorCode === 'auth/email-already-in-use') {
                 console.log("invalid email");
                 setIsValid({
                     ...isValid,
                     email: false
                 })     
-            }else if(error.code === 'auth/weak-password'){
+            }else if(errorCode === 'auth/weak-password'){
                 setIsValid({
                     ...isValid,
                     password:false
