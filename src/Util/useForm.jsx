@@ -10,6 +10,8 @@ export const useForm = (callback) => {
     const [inputErrors] = useState({
         email: "Invalid Email Address / Already In Use",
         password: "Password Too Weak",
+        emailSignIn: "Email does not exist",
+        passwordSignIn: "Incorrect Password"
     })
 
     // Handlers
