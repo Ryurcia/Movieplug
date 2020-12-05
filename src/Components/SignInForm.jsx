@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { useForm } from '../Util/useForm';
 // imgs
 import googleIcon from '../img/google-icon.png';
-import fbIcon from '../img/facebook-icon.png';
 
 // Styles
 import { SignUpStyled, FormStyled } from '../Styled-Components/StyledForms'
@@ -51,13 +50,44 @@ export const SignInForm = () => {
         })
     }
 
+    // Google Auth
+    let provider = new firebase.auth.GoogleAuthProvider();
+
+    const googleSignUp = () => {
+        firebase.auth().signInWithPopup(provider)
+        .then(function(result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            let token = result.credential.accessToken;
+            console.log(token);
+            
+            // The signed-in user info.
+            let user = result.user;
+            console.log(user);
+            })
+            .catch(function(error) {
+            // Handle Errors here.
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            console.log(`${errorCode}: ${errorMessage}`);
+
+            // The email of the user's account used.
+            let email = error.email;
+            console.log(email);
+            
+            // The firebase.auth.AuthCredential type that was used.
+            let credential = error.credential;
+            console.log(credential);
+            
+            });
+            
+    }
+
 
     return (
         <SignUpStyled>
             <h1>Welcome Back</h1>
             <div className="options">
-                <button className='option-btn'><img src={googleIcon} alt="" width='40px' /></button>
-                <button className='option-btn'><img src={fbIcon} alt="" width='40px' /></button>
+                <button className='option-btn' onClick={googleSignUp}><img src={googleIcon} alt="" width='20px' /> Sign In with Google</button>
             </div>
 
             {/* Form */}
