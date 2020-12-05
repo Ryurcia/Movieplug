@@ -31,11 +31,15 @@ h1 {
     width:100%;
     display:flex;
     justify-content:center;
-    gap:50px;
     .option-btn {
-        padding:10px;
+        width:80%;
+        display:flex;
+        justify-content:center;
+        gap:10px;
+        align-items:center;
+        padding:5px;
         border:1px solid black;
-        border-radius:50%;
+        border-radius:10px;
         background-color:#E8E8E8;
         cursor:pointer;
         outline:none;
