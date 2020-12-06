@@ -9,6 +9,10 @@ flex-wrap:wrap;
 justify-content:space-around;
 background-color:#F05454;
 
+@media screen and (max-width:834px) {
+flex-direction:column;
+}
+
 `
 
 export const TitleStyled = styled.div`
@@ -21,6 +25,21 @@ h1{
 p{
     font-size: 1.5rem;
     font-weight:300;
+}
+
+@media screen and (max-width: 1140px) {
+    h1 {
+        font-size: 3rem;
+    }
+    p {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    h1 {
+        color: #222831;
+    }
 }
 `
 

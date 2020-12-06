@@ -7,7 +7,7 @@ import { useForm } from '../Util/useForm';
 import googleIcon from '../img/google-icon.png';
 
 // Styles
-import { SignUpStyled, FormStyled } from '../Styled-Components/StyledForms'
+import { SignUpStyled,SignInStyled, FormStyled } from '../Styled-Components/StyledForms'
 
 
 export const SignInForm = () => {
@@ -84,7 +84,7 @@ export const SignInForm = () => {
 
 
     return (
-        <SignUpStyled>
+        <SignInStyled>
             <h1>Welcome Back</h1>
             <div className="options">
                 <button className='option-btn' onClick={googleSignUp}><img src={googleIcon} alt="" width='20px' /> Sign In with Google</button>
@@ -102,6 +102,6 @@ export const SignInForm = () => {
 
             <button className='logBtn' onClick={handleSubmit}>Sign In</button>
             <Link className='link-item' to='/'>New User? Sign Up</Link>
-        </SignUpStyled>
+        </SignInStyled>
     )
 }

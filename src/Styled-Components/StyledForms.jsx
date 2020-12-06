@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 
 export const SignUpStyled = styled.div`
-height:724px;
-max-height:650px;
+height:650px;
 width:418px;
 max-width:90%;
 border:none;
@@ -61,6 +60,10 @@ h3 {
     color:#E8E8E8;
     font-weight:400;
 }
+
+@media screen and (max-width: 650px) {
+    background-color:transparent;
+}
 `
 
 
@@ -86,5 +89,16 @@ label {
     width:80%;
     margin:auto;
     color:red;
+}
+`
+
+// Sign In Form
+export const SignInStyled = styled(SignUpStyled)`
+@media screen and (max-width:650px) {
+    h1,
+    .logBtn,
+    .link-item {
+        color:#222831;
+    }
 }
 `

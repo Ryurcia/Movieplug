@@ -37,7 +37,7 @@ export const SignInPage = () => {
         >
             <AuthSignInStyled>
                 <SignInTitleStyled>
-                    <h1>Welcome Back</h1>
+                    <h1>Movieplug</h1>
                     <p>Jump back in and share your favorite films and shows with friends</p>
                 </SignInTitleStyled>
 
