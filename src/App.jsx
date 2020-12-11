@@ -4,16 +4,21 @@ import { AnimatePresence } from 'framer-motion';
 // Pages
 import { SignUpPage } from './Pages/SignUpPage';
 import { SignInPage } from './Pages/SignInPage';
+import { HomePage } from './Pages/HomePage';
+import { PrivateRoute } from './Components/PrivateRoute';
 // Global Style
 import { GlobalStyle } from './Styled-Components/GlobalStyles';
 
 function App() {
+  localStorage.setItem('loggedIn',false);
+  console.log(localStorage.getItem('loggedIn'));
   return (
     <div className="App">
       <GlobalStyle />
       <AnimatePresence>
         <Switch>
-          <Route exact path='/' component={SignUpPage} />
+          <PrivateRoute exact path='/' component={HomePage} />
+          <Route exact path='/SignUp' component={SignUpPage} />
           <Route exact path='/SignIn' component={SignInPage} />
         </Switch>
       </AnimatePresence>
