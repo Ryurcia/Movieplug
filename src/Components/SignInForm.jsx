@@ -1,16 +1,19 @@
 import React,{useState} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+// Utils
 import { useForm } from '../Util/useForm';
 // imgs
 import googleIcon from '../img/google-icon.png';
 
 // Styles
-import { SignUpStyled,SignInStyled, FormStyled } from '../Styled-Components/StyledForms'
+import { SignInStyled, FormStyled } from '../Styled-Components/StyledForms'
 
 
 export const SignInForm = () => {
+    console.log(localStorage.getItem('loggedIn'));
+    let history = useHistory();
     // UseForm Callback
     const {inputValues,inputErrors, handleChange, handleSubmit} = useForm(handleSignIn);
 
@@ -28,12 +31,16 @@ export const SignInForm = () => {
         .then((user) => {
             // Signed in 
             console.log("Signed In");
+            
+            localStorage.setItem('loggedIn', true);
         })
         .catch((error) => {
             let errorCode = error.code
             let errorMessage = error.message
 
             console.log(`${errorCode}: ${errorMessage}`);
+
+            localStorage.setItem('loggedIn', false);
 
             if(errorCode === 'auth/user-not-found') {
                 console.log("invalid email");
@@ -101,7 +108,7 @@ export const SignInForm = () => {
             </FormStyled>
 
             <button className='logBtn' onClick={handleSubmit}>Sign In</button>
-            <Link className='link-item' to='/'>New User? Sign Up</Link>
+            <Link className='link-item' to='/SignUp'>New User? Sign Up</Link>
         </SignInStyled>
     )
 }

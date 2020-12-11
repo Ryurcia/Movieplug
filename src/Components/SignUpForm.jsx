@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 import { useForm } from '../Util/useForm';
 // imgs
 import googleIcon from '../img/google-icon.png';
@@ -11,6 +11,7 @@ import { SignUpStyled, FormStyled } from '../Styled-Components/StyledForms'
 
 
 export const SignUpForm = () => {
+    let history = useHistory();
     // useForm Callback
     const {inputValues,inputErrors, handleChange, handleSubmit} = useForm(handleSignUp);
 
@@ -23,7 +24,7 @@ export const SignUpForm = () => {
 
     // Handlers
     function handleSignUp () {
-        console.log("Signed Up");
+
         console.log(`Email: ${inputValues.email} Pass: ${inputValues.password}`);
 
         firebase.auth().createUserWithEmailAndPassword(inputValues.email, inputValues.password)
@@ -35,12 +36,17 @@ export const SignUpForm = () => {
                 email: true,
                 password:true
             })
+
+            localStorage.setItem('loggedIn', true);
+
         })
         .catch((error) => {
             let errorCode = error.code
             let errorMessage = error.message
 
             console.log(`${errorCode}: ${errorMessage}`);
+
+            localStorage.setItem('loggedIn', false);
             
             if(errorCode === 'auth/invalid-email' || errorCode === 'auth/email-already-in-use') {
                 console.log("invalid email");
