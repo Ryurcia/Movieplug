@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Components
 import { SignUpForm } from '../Components/SignUpForm';
@@ -9,6 +10,8 @@ import { AuthStyled, TitleStyled } from '../Styled-Components/AuthStyled';
 
 export const SignUpPage = () => {
 
+    let history = useHistory();
+    
     const motionObjects = {
         initial : {
             opacity: 0 
@@ -24,6 +27,14 @@ export const SignUpPage = () => {
             duration: 0.4 
         }
     }
+
+    useEffect(() => {
+        if (localStorage.getItem('loggedIn') === 'true') {
+            setTimeout(() => {
+                history.replace('/')
+            }, 2000);
+        }
+    })
 
 
     if(localStorage.getItem('loggedIn') === 'true') {

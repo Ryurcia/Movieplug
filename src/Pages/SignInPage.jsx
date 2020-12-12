@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { motion } from 'framer-motion';
+import { useHistory } from 'react-router-dom';
 // Components
 import { SignInForm } from '../Components/SignInForm';
 // Styles
@@ -8,6 +9,8 @@ import { AuthSignInStyled, SignInTitleStyled } from '../Styled-Components/AuthSt
 
 
 export const SignInPage = () => {
+
+    let history = useHistory();
 
     const motionObjects = {
         initial : {
@@ -27,11 +30,21 @@ export const SignInPage = () => {
             duration: 0.5
         }
     }
+
+    useEffect(() => {
+        if(localStorage.getItem('loggedIn') === 'true') {
+            setTimeout(() => {
+                history.replace('/')
+            }, 2000);
+        }
+    })
+
     
     if(localStorage.getItem('loggedIn') === 'true') {
         return(
             <h3>You're already logged in</h3>
         )
+
     }else {
         return (
             <motion.div
