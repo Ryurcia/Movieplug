@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Link, useHistory } from 'react-router-dom';
@@ -15,12 +15,12 @@ export const SignInForm = () => {
     console.log(localStorage.getItem('loggedIn'));
     let history = useHistory();
     // UseForm Callback
-    const {inputValues,inputErrors, handleChange, handleSubmit} = useForm(handleSignIn);
+    const { inputValues, inputErrors, handleChange, handleSubmit } = useForm(handleSignIn);
 
     // States
-    const [isValid,setIsValid] = useState({
-        email : true,
-        password : true,
+    const [isValid, setIsValid] = useState({
+        email: true,
+        password: true,
     })
 
 
@@ -28,33 +28,35 @@ export const SignInForm = () => {
         console.log(`Email: ${inputValues.email} Pass: ${inputValues.password}`);
 
         firebase.auth().signInWithEmailAndPassword(inputValues.email, inputValues.password)
-        .then((user) => {
-            // Signed in 
-            console.log("Signed In");
-            
-            localStorage.setItem('loggedIn', true);
-        })
-        .catch((error) => {
-            let errorCode = error.code
-            let errorMessage = error.message
+            .then((user) => {
+                // Signed in 
+                console.log("Signed In");
 
-            console.log(`${errorCode}: ${errorMessage}`);
+                // Local Storage keeps user logged in
+                localStorage.setItem('loggedIn', true);
+                history.replace('/');
+            })
+            .catch((error) => {
+                let errorCode = error.code
+                let errorMessage = error.message
 
-            localStorage.setItem('loggedIn', false);
+                console.log(`${errorCode}: ${errorMessage}`);
 
-            if(errorCode === 'auth/user-not-found') {
-                console.log("invalid email");
-                setIsValid({
-                    ...isValid,
-                    email: false
-                })     
-            }else if(errorCode === 'auth/weak-password'){
-                setIsValid({
-                    ...isValid,
-                    password:false
-                })
-            }
-        })
+                localStorage.setItem('loggedIn', false);
+
+                if (errorCode === 'auth/user-not-found') {
+                    console.log("invalid email");
+                    setIsValid({
+                        ...isValid,
+                        email: false
+                    })
+                } else if (errorCode === 'auth/wrong-password') {
+                    setIsValid({
+                        ...isValid,
+                        password: false
+                    })
+                }
+            })
     }
 
     // Google Auth
@@ -62,31 +64,31 @@ export const SignInForm = () => {
 
     const googleSignUp = () => {
         firebase.auth().signInWithPopup(provider)
-        .then(function(result) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            let token = result.credential.accessToken;
-            console.log(token);
-            
-            // The signed-in user info.
-            let user = result.user;
-            console.log(user);
-            })
-            .catch(function(error) {
-            // Handle Errors here.
-            let errorCode = error.code;
-            let errorMessage = error.message;
-            console.log(`${errorCode}: ${errorMessage}`);
+            .then(function (result) {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                let token = result.credential.accessToken;
+                console.log(token);
 
-            // The email of the user's account used.
-            let email = error.email;
-            console.log(email);
-            
-            // The firebase.auth.AuthCredential type that was used.
-            let credential = error.credential;
-            console.log(credential);
-            
+                // The signed-in user info.
+                let user = result.user;
+                console.log(user);
+            })
+            .catch(function (error) {
+                // Handle Errors here.
+                let errorCode = error.code;
+                let errorMessage = error.message;
+                console.log(`${errorCode}: ${errorMessage}`);
+
+                // The email of the user's account used.
+                let email = error.email;
+                console.log(email);
+
+                // The firebase.auth.AuthCredential type that was used.
+                let credential = error.credential;
+                console.log(credential);
+
             });
-            
+
     }
 
 
