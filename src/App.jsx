@@ -10,8 +10,9 @@ import { PrivateRoute } from './Components/PrivateRoute';
 import { GlobalStyle } from './Styled-Components/GlobalStyles';
 
 function App() {
-  localStorage.setItem('loggedIn',false);
+
   console.log(localStorage.getItem('loggedIn'));
+
   return (
     <div className="App">
       <GlobalStyle />
