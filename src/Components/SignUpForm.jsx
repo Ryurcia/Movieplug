@@ -21,7 +21,6 @@ export const SignUpForm = () => {
         password: true,
     })
 
-
     // Handlers
     function handleSignUp() {
 

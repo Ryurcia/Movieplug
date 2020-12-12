@@ -12,7 +12,7 @@ import { SignInStyled, FormStyled } from '../Styled-Components/StyledForms'
 
 
 export const SignInForm = () => {
-    console.log(localStorage.getItem('loggedIn'));
+
     let history = useHistory();
     // UseForm Callback
     const { inputValues, inputErrors, handleChange, handleSubmit } = useForm(handleSignIn);
@@ -22,7 +22,6 @@ export const SignInForm = () => {
         email: true,
         password: true,
     })
-
 
     function handleSignIn() {
         console.log(`Email: ${inputValues.email} Pass: ${inputValues.password}`);
@@ -44,18 +43,28 @@ export const SignInForm = () => {
 
                 localStorage.setItem('loggedIn', false);
 
-                if (errorCode === 'auth/user-not-found') {
-                    console.log("invalid email");
-                    setIsValid({
-                        ...isValid,
-                        email: false
-                    })
-                } else if (errorCode === 'auth/wrong-password') {
-                    setIsValid({
-                        ...isValid,
-                        password: false
-                    })
+                switch (errorCode) {
+                    case 'auth/user-not-found':
+                        setIsValid({
+                            ...isValid,
+                            email: false
+                        })
+                        break;
+                    case 'auth/wrong-password':
+                        setIsValid({
+                            ...isValid,
+                            password: false
+                        })
+                        break;
+                    default:
+                        setIsValid({
+                            ...isValid,
+                            email: false,
+                            password: false
+                        })
+                        break;
                 }
+
             })
     }
 
@@ -90,7 +99,6 @@ export const SignInForm = () => {
             });
 
     }
-
 
     return (
         <SignInStyled>

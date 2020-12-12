@@ -1,8 +1,7 @@
 import React from 'react'
-import { Route, Redirect, useHistory } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-    let history = useHistory();
 
     return (
         <Route {...rest} render={(props) => {
