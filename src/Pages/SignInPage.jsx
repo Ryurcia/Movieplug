@@ -28,22 +28,29 @@ export const SignInPage = () => {
         }
     }
     
-    return (
-        <motion.div
-            initial={motionObjects.initial}
-            animate={motionObjects.animate}
-            exit={motionObjects.exit}
-            transition={motionObjects.transition}
-        >
-            <AuthSignInStyled>
-                <SignInTitleStyled>
-                    <h1>Movieplug</h1>
-                    <p>Jump back in and share your favorite films and shows with friends</p>
-                </SignInTitleStyled>
+    if(localStorage.getItem('loggedIn') === 'true') {
+        return(
+            <h3>You're already logged in</h3>
+        )
+    }else {
+        return (
+            <motion.div
+                initial={motionObjects.initial}
+                animate={motionObjects.animate}
+                exit={motionObjects.exit}
+                transition={motionObjects.transition}
+            >
+                <AuthSignInStyled>
+                    <SignInTitleStyled>
+                        <h1>Movieplug</h1>
+                        <p>Jump back in and share your favorite films and shows with friends</p>
+                    </SignInTitleStyled>
 
-                <SignInForm />
+                    <SignInForm />
 
-            </AuthSignInStyled>
-        </motion.div>
-    )
+                </AuthSignInStyled>
+            </motion.div>
+        )
+    }
+    
 }

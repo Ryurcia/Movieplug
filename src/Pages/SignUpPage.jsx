@@ -25,22 +25,29 @@ export const SignUpPage = () => {
         }
     }
 
-    return (
-        <motion.div
-            initial={motionObjects.initial}
-            animate={motionObjects.animate}
-            exit={motionObjects.exit}
-            transition={motionObjects.transition}
-        >
-            <AuthStyled>
-                <TitleStyled>
-                    <h1>Movieplug</h1>
-                    <p>Share Your Favorite Movies/Shows with Your Friends and the World</p>
-                </TitleStyled>
 
-                <SignUpForm />
+    if(localStorage.getItem('loggedIn') === 'true') {
+        return(
+            <h3>You're already logged in</h3>
+        )
+    }else {
+        return (
+            <motion.div
+                initial={motionObjects.initial}
+                animate={motionObjects.animate}
+                exit={motionObjects.exit}
+                transition={motionObjects.transition}
+            >
+                <AuthStyled>
+                    <TitleStyled>
+                        <h1>Movieplug</h1>
+                        <p>Share Your Favorite Movies/Shows with Your Friends and the World</p>
+                    </TitleStyled>
 
-            </AuthStyled>
-        </motion.div>
-    )
+                    <SignUpForm />
+
+                </AuthStyled>
+            </motion.div>
+        )
+    } 
 }
