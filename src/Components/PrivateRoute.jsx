@@ -8,7 +8,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
             if (localStorage.getItem('loggedIn') === 'true') {
                 return <Component {...props} />;
             } else {
-                return <Redirect to="/SignIn" />
+                return <Redirect to="/" />
             }
         }} />
     )

@@ -33,7 +33,7 @@ export const SignInForm = () => {
 
                 // Local Storage keeps user logged in
                 localStorage.setItem('loggedIn', true);
-                history.replace('/');
+                history.replace('/home');
             })
             .catch((error) => {
                 let errorCode = error.code

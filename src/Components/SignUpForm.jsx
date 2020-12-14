@@ -38,7 +38,7 @@ export const SignUpForm = () => {
 
                 // Local Storage keeps user logged in
                 localStorage.setItem('loggedIn', true);
-                history.replace('/');
+                history.replace('/home');
 
             })
             .catch((error) => {
@@ -115,7 +115,7 @@ export const SignUpForm = () => {
             </FormStyled>
 
             <button className='logBtn' onClick={handleSubmit}>Sign Up</button>
-            <Link className='link-item' to='/SignIn'>Already Signed Up? Sign In</Link>
+            <Link className='link-item' to='/'>Already Signed Up? Sign In</Link>
         </SignUpStyled>
     )
 }

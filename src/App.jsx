@@ -18,9 +18,9 @@ function App() {
       <GlobalStyle />
       <AnimatePresence>
         <Switch>
-          <PrivateRoute exact path='/' component={HomePage} />
+          <PrivateRoute exact path='/home' component={HomePage} />
           <Route exact path='/SignUp' component={SignUpPage} />
-          <Route exact path='/SignIn' component={SignInPage} />
+          <Route exact path='/' component={SignInPage} />
         </Switch>
       </AnimatePresence>
     </div>

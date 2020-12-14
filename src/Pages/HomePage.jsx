@@ -10,7 +10,7 @@ export const HomePage = () => {
         e.preventDefault();
         firebase.auth().signOut().then(() => {
             localStorage.setItem('loggedIn', false);
-            history.replace('/SignIn');
+            history.replace('/');
             console.log("Signed Out");
         })
     }

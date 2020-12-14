@@ -34,7 +34,7 @@ export const SignInPage = () => {
     useEffect(() => {
         if(localStorage.getItem('loggedIn') === 'true') {
             setTimeout(() => {
-                history.replace('/')
+                history.replace('/home')
             }, 2000);
         }
     })
