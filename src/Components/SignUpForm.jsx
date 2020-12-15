@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Link, useHistory } from 'react-router-dom';
+// Utils
 import { useForm } from '../Util/useForm';
+import { googleSignUp, provider } from '../Util/GoogleAuth';
 // imgs
 import googleIcon from '../img/google-icon.png';
 
@@ -11,15 +13,16 @@ import { SignUpStyled, FormStyled } from '../Styled-Components/StyledForms'
 
 
 export const SignUpForm = () => {
-    let history = useHistory();
-    // useForm Callback
+    // useForm
     const { inputValues, inputErrors, handleChange, handleSubmit } = useForm(handleSignUp);
 
-    //States
+    //Valid States will determine whether or not to trigger error messages from useForm
     const [isValid, setIsValid] = useState({
         email: true,
         password: true,
     })
+
+    let history = useHistory();
 
     // Handlers
     function handleSignUp() {
@@ -65,43 +68,11 @@ export const SignUpForm = () => {
 
     }
 
-    // Google Auth
-    let provider = new firebase.auth.GoogleAuthProvider();
-
-    const googleSignUp = () => {
-        firebase.auth().signInWithPopup(provider)
-            .then(function (result) {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                let token = result.credential.accessToken;
-                console.log(token);
-
-                // The signed-in user info.
-                let user = result.user;
-                console.log(user);
-            })
-            .catch(function (error) {
-                // Handle Errors here.
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                console.log(`${errorCode}: ${errorMessage}`);
-
-                // The email of the user's account used.
-                let email = error.email;
-                console.log(email);
-
-                // The firebase.auth.AuthCredential type that was used.
-                let credential = error.credential;
-                console.log(credential);
-
-            });
-
-    }
-
     return (
         <SignUpStyled>
             <h1>Get Started</h1>
             <div className="options">
-                <button className='option-btn' onClick={googleSignUp}><img src={googleIcon} alt="" width='20px' /> Sign In with Google</button>
+                <button className='option-btn' onClick={() => googleSignUp(provider, history)}><img src={googleIcon} alt="" width='20px' /> Sign In with Google</button>
             </div>
 
             {/* Form */}
