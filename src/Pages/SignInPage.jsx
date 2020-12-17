@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { motion } from 'framer-motion';
 import { useHistory } from 'react-router-dom';
 // Components
-import { SignInForm } from '../Components/SignInForm';
+import { SignInForm } from '../Components/Auth/SignInForm';
 // Styles
 import { AuthSignInStyled, SignInTitleStyled } from '../Styled-Components/AuthStyled';
 
@@ -15,7 +15,8 @@ export const SignInPage = () => {
     const motionObjects = {
         initial : {
             x:'100vh', 
-            opacity: 0 
+            opacity: 0,
+            width: '100%'
         },
         animate : {
             x: 0,
@@ -23,7 +24,8 @@ export const SignInPage = () => {
         },
         exit : {
             x: '100vh', 
-            opacity: 0 
+            opacity: 0,
+            width: '100%'
         },
         transition : {
             ease: "easeIn", 

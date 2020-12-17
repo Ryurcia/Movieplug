@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Components
-import { SignUpForm } from '../Components/SignUpForm';
+import { SignUpForm } from '../Components/Auth/SignUpForm';
 // Styles
 import { AuthStyled, TitleStyled } from '../Styled-Components/AuthStyled';
 
@@ -14,13 +14,15 @@ export const SignUpPage = () => {
     
     const motionObjects = {
         initial : {
-            opacity: 0 
+            opacity: 0,
+            width: '100%'
         },
         animate : {
-            opacity: 1
+            opacity: 1,
         },
         exit : { 
-            opacity: 0 
+            opacity: 0,
+            width: '100%'
         },
         transition : {
             ease: "easeIn", 

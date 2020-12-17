@@ -1,6 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 import firebase from 'firebase';
+// Styled Components
+import { ContentStyled } from '../Styled-Components/ContentStyled';
 
 export const HomePage = () => {
 
@@ -16,10 +18,12 @@ export const HomePage = () => {
     }
 
     return (
-        <div>
-            <h1>Home Page</h1>
-            <button onClick={handleSignOut}>Sign Out</button>
-        </div>
+        <ContentStyled>
+            <div className="content">
+                <h1>Home Page</h1>
+                <button onClick={handleSignOut}>Sign Out</button>
+            </div>
+        </ContentStyled>
     )
 }
 
