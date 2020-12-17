@@ -3,13 +3,13 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Link, useHistory } from 'react-router-dom';
 // Utils
-import { useForm } from '../Util/useForm';
-import { googleSignUp, provider } from '../Util/GoogleAuth';
+import { useForm } from '../../Util/useForm';
+import { googleSignUp, provider } from '../../Util/GoogleAuth';
 // imgs
-import googleIcon from '../img/google-icon.png';
+import googleIcon from '../../img/google-icon.png';
 
 // Styles
-import { SignInStyled, FormStyled } from '../Styled-Components/StyledForms'
+import { SignInStyled, FormStyled } from '../../Styled-Components/StyledForms'
 
 
 export const SignInForm = () => {
