@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 // Components
-import { NavComponents } from './NavComponent';
+import NavComponents from './NavComponent';
 
 
 const NavBar = (props) => {
