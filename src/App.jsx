@@ -7,6 +7,7 @@ import { SignUpPage } from './Pages/SignUpPage';
 import { SignInPage } from './Pages/SignInPage';
 import { HomePage } from './Pages/HomePage';
 import { ProfilePage } from './Pages/ProfilePage';
+import { ExplorePage } from './Pages/ExplorePage';
 import { PrivateRoute } from './Components/PrivateRoute';
 // Components
 import NavBar from './Components/Nav/NavBar';
@@ -27,6 +28,7 @@ const App = () => {
           </ Route>
           <PrivateRoute exact path='/home' component={HomePage} />
           <PrivateRoute exact path='/profile' component={ProfilePage} />
+          <PrivateRoute exact path='/explore' component={ExplorePage} />
           <Route exact path='/SignUp' component={SignUpPage} />
           <Route exact path="/SignIn" component={SignInPage} />
         </Switch>
