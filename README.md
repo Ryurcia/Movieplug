@@ -6,7 +6,7 @@ Social Media like app that allows you to reccomend your favorite movies/shows to
 
 ### Firebase
 
-Will handle client data and user authentication
+Will handle user authentication
 
 Learn More On: 
 [Firebase](https://firebase.google.com/docs)
