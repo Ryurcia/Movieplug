@@ -48,13 +48,15 @@ export const SignInForm = () => {
                     case 'auth/user-not-found':
                         setIsValid({
                             ...isValid,
-                            email: false
+                            email: false,
+                            password: true
                         })
                         break;
                     case 'auth/wrong-password':
                         setIsValid({
                             ...isValid,
-                            password: false
+                            password: false,
+                            email: true
                         })
                         break;
                     default:

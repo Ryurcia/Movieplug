@@ -55,12 +55,14 @@ export const SignUpForm = () => {
                     console.log("invalid email");
                     setIsValid({
                         ...isValid,
-                        email: false
+                        email: false,
+                        password: true
                     })
                 } else if (errorCode === 'auth/weak-password') {
                     setIsValid({
                         ...isValid,
-                        password: false
+                        password: false,
+                        email: true
                     })
                 }
             })
