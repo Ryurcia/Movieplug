@@ -90,6 +90,12 @@ label {
     margin:auto;
     color:red;
 }
+
+@media screen and (max-width: 650px) {
+    label {
+        color: #000000;
+    }
+}
 `
 
 // Sign In Form
